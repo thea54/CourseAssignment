@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Optional Packages</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel id="panel" header="Register a new package"> 
+            <p:focus context="panel"/>
+            <p:messages />
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:outputLabel for="packageName" value="Package name: " />
+                    <h:inputText id="packageName" value="#{optPackage.name}" required="true" />
+
+                    <p:outputLabel for="packageYear" value="Package year: " />
+                    <h:inputText id="packageYear" value="#{optPackage.year}" required="true" />           
+                    
+                    <p:outputLabel for="packageSemester" value="Package semester: " />
+                    <p:spinner id="packageSemester" value="#{optPackage.semester}" min="1" max="2" required="true" /> 
+                    
+                    <p:outputLabel for="packageCourses" value="Package courses: " />
+                    <p:chips id="packageCourses" value="#{optPackage.coursesStr}" />
+                </h:panelGrid>    
+                <h:commandButton value="Submit" action="#{optPackages.addPackage(optPackage)}"/>  
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

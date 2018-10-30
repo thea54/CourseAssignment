@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Courses</title>
+    </h:head>
+    <h:body>
+         <h:form>
+            <p:panel id="panel" header="Register a new course"> 
+            <p:focus context="panel"/>
+            <p:messages />
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:outputLabel for="courseName" value="Course title: " />
+                    <h:inputText id="courseName" value="#{course.name}" required="true" />
+
+                    <p:outputLabel for="courseYear" value="Course year: " />
+                    <h:inputText id="courseYear" value="#{course.year}" required="true" />           
+                    
+                    <p:outputLabel for="courseSemester" value="Course semester: " />
+                    <p:spinner id="courseSemester" value="#{course.semester}" min="1" max="2" required="true" /> 
+                    
+                    <p:outputLabel for="maxStud" value="Maximum number of students: " />
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">                        
+                        <p:inputText id="maxStud" value="#{course.maxStudents}" required="true"/>
+                        <p:slider for="maxStud" step="10" maxValue="200" minValue="30"/>
+                    </h:panelGrid>
+                    
+                    <p:outputLabel for="courseLect" value="Course lecturer: " />
+                    <h:inputText id="courseLect" value="#{course.lecturerStr}" required="true" /> 
+                    
+                    <p:outputLabel for="coursePackage" value="Course package: " />
+                    <h:inputText id="coursePackage" value="#{course.packageStr}" required="true" /> 
+                </h:panelGrid>    
+                <h:commandButton value="Submit" action="#{courses.addCourse(course)}"/>  
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
