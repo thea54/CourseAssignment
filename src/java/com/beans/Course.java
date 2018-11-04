@@ -17,23 +17,28 @@ import javax.faces.bean.RequestScoped;
 public class Course {
     private Integer id;
     private String name;
-    private String year;
-    private String semester;
+    private Integer year = 0;
+    private Integer semester = 0;
     private Lecturer lecturer;
-    private String lecturerStr;
-    private Integer maxStudents;
+    private String lecturerStr = "";
+    private Integer maxStudents = 0;
     private Package packageObj;
     private String packageStr;
+    
+    @Override
+    public String toString() {
+        return id + " " + name;
+    }
     
     public String getName() {
         return name;
     }
     
-    public String getYear() {
+    public Integer getYear() {
         return year;
     }
     
-    public String getSemester() {
+    public Integer getSemester() {
         return semester;
     }
     
@@ -49,11 +54,11 @@ public class Course {
         this.name = name;
     }
     
-    public void setYear(String year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
     
-    public void setSemester(String semester) {
+    public void setSemester(Integer semester) {
         this.semester = semester;
     }
     

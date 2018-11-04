@@ -1,0 +1,32 @@
+<ui:composition template = "/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name ="title">
+        Lecturer Registration
+    </ui:define>
+    <ui:define  name ="content"> 
+        <h:form>
+            <p:panel id="panel" header="Register a new student"> 
+            <p:focus context="panel"/>
+            <p:messages />
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="studentName" value="Student name: " />
+                <h:inputText id="studentName" value="#{student.name}" required="true" />
+
+                <p:outputLabel for="studentMail" value="Student mail" />
+                <h:inputText id="studentMail" value="#{student.mail}" required="true" />
+                
+                <p:outputLabel for="coursesSelect" value="Select courses" />
+                <p:selectManyCheckbox id="coursesSelect" value="#{student.selectedCourses}" layout="grid" columns="3">
+                    <f:selectItems value="#{student.availableCourses}" var="course" itemLabel="#{course}" itemValue="#{course}" />
+                </p:selectManyCheckbox>
+            </h:panelGrid>
+            <h:commandButton value="Submit" action="#{students.addStudentToDB(student)}"/>  
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

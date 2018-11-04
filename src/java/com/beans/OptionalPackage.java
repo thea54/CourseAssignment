@@ -5,6 +5,7 @@
  */
 package com.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -19,10 +20,10 @@ public class OptionalPackage {
 
    private Integer id;
     private String name;
-    private String year;
-    private String semester;
+    private Integer year = 0;
+    private Integer semester = 0;
     private List<Course> courses;
-    private List<String> coursesStr;
+    private List<String> coursesStr = new ArrayList<String>();
 
 
     public String getName() {
@@ -33,19 +34,19 @@ public class OptionalPackage {
         this.name = name;
     }
 
-    public String getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public String getSemester() {
+    public Integer getSemester() {
         return semester;
     }
 
-    public void setSemester(String semester) {
+    public void setSemester(Integer semester) {
         this.semester = semester;
     }
 

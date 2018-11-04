@@ -19,7 +19,7 @@ public class Lecturer {
     private Integer id;
     private String name;
     private Course course;
-    private String courseName;
+    private String courseName = "";
 
     
     public String getName() {
