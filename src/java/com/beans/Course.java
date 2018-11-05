@@ -5,6 +5,7 @@
  */
 package com.beans;
 
+import java.net.URL;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -24,6 +25,7 @@ public class Course {
     private Integer maxStudents = 0;
     private Package packageObj;
     private String packageStr;
+    private URL website;
     
     @Override
     public String toString() {
@@ -112,6 +114,14 @@ public class Course {
      */
     public void setPackageStr(String packageStr) {
         this.packageStr = packageStr;
+    }
+
+    public URL getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(URL website) {
+        this.website = website;
     }
 
     

@@ -18,7 +18,9 @@
                 <h:inputText id="studentName" value="#{student.name}" required="true" />
 
                 <p:outputLabel for="studentMail" value="Student mail" />
-                <h:inputText id="studentMail" value="#{student.mail}" required="true" />
+                <p:inputText id="studentMail" value="#{student.mail}" required="true" >
+                    <f:validator validatorId="emailValidator"/>
+                </p:inputText>
                 
                 <p:outputLabel for="coursesSelect" value="Select courses" />
                 <p:selectManyCheckbox id="coursesSelect" value="#{student.selectedCourses}" layout="grid" columns="3">

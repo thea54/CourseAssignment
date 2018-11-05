@@ -1,33 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <p:dataTable id="coursesList" var="a" value="#{courses.getAllcoursesFromDb()}">
-		<p:column headerText="Name">
+<ui:composition template = "/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:composite="http://java.sun.com/jsf/composite">
+    <ui:define name ="title">
+        All courses
+    </ui:define>
+    <ui:define  name ="content">        
+        <p:dataTable id="coursesList" var="a" value="#{courses.getAllCoursesFromDB()}" scrollable="true" scrollHeight="150">
+		<p:column headerText="Title">
 			<h:outputText value="#{a.name}" />
 		</p:column>
 
-		<p:column headerText="Allocated project">
+		<p:column headerText="Year">
 			<h:outputText value="#{a.year}" />
 		</p:column>
 
-		<p:column headerText="Preferred project">
+		<p:column headerText="Semester">
 			<h:outputText value="#{a.semester}" />
 		</p:column>
             
-                <p:column headerText="Preferred project">
-			<h:outputText value="#{a.semester}" />
+                <p:column headerText="Max students">
+			<h:outputText value="#{a.maxStudents}" />
 		</p:column>
-
-	</p:dataTable>
-    </body>
-</html>
+	</p:dataTable>   
+        
+        
+    </ui:define>
+</ui:composition>

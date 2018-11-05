@@ -80,6 +80,31 @@ public class LecturerUtils {
         return allLecturers;
     }
     
+    public static List<Lecturer> getAllLecturersFromDB() {     
+        Connection con;
+        PreparedStatement stmt;
+        ResultSet rs;
+        List<Lecturer> res = new ArrayList<>();
+        try {
+            con = DatabaseUtils.getConnection();
+            stmt = con.prepareStatement("select * from \"Lecturers\"");
+            stmt.execute();
+            rs = stmt.getResultSet();
+
+            while (rs != null && rs.next()) {
+                Lecturer lecturer = new Lecturer();
+                lecturer.setId(rs.getInt("id"));
+                lecturer.setName(rs.getString("name"));               
+                
+                res.add(lecturer);
+            }
+            stmt.close();
+        } catch(Exception e) {
+            
+        }
+        return res;
+    }
+    
     public void printAllLecturers() {
         for (Lecturer lecturer : allLecturers) {
             System.out.println(lecturer.getName());

@@ -39,9 +39,9 @@ public class StudentUtils {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
                             id = generatedKeys.getLong(1);
-                            System.out.println("Generated lecturer with id = " + id);
+                            System.out.println("Generated student with id = " + id);
                     } else {
-                            System.out.println("Adding lecturer failed, no ID obtained.");
+                            System.out.println("Adding student failed, no ID obtained.");
                     }
                 }
             }   
