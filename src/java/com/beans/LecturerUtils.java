@@ -53,7 +53,7 @@ public class LecturerUtils {
             long id = -1;
 
             if (affectedRows == 0) {
-                    System.out.println("Addin lecturer failed, no rows affected.");
+                    System.out.println("Adding lecturer failed, no rows affected.");
             } else {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {

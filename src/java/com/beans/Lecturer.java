@@ -5,6 +5,7 @@
  */
 package com.beans;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -14,12 +15,22 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean(name="lecturer")
 @RequestScoped
-public class Lecturer {
+public class Lecturer implements Serializable{
 
     private Integer id;
     private String name;
     private Course course;
     private String courseName = "";
+
+    String bookmarkURL;
+
+    public String getBookmarkURL() {
+            return bookmarkURL;
+    }
+
+    public void setBookmarkURL(String bookmarkURL) {
+            this.bookmarkURL = bookmarkURL;
+    }
 
     
     public String getName() {

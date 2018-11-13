@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package com.converters;
-
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
+import javax.faces.convert.FacesConverter;
+import org.apache.commons.validator.UrlValidator;
 import java.net.URL;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,20 +20,41 @@ import javax.faces.convert.FacesConverter;
 
 @FacesConverter(value = "urlConverter")
 public class URLConverter implements Converter {
-    // Presentation -> Model
-    @Override
-    public Object getAsObject(FacesContext context,
-            UIComponent component, String newValue) throws ConverterException {
-        try {
-            return new URL(newValue);
-        } catch (Exception e) {
-            throw new ConverterException("Hey, conversion error!");
-        }
-    }
-// Model -> Presentation
-    @Override
-    public String getAsString(FacesContext context,
-            UIComponent component, Object value) throws ConverterException {
-        return String.valueOf(value);
-    }
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component,
+		String value) {
+		
+		String HTTP = "http://";
+		StringBuilder url = new StringBuilder();
+
+		//if not start with http://, then add it
+		if(!value.startsWith(HTTP, 0)){
+			url.append(HTTP);
+		}
+		url.append(value);
+		
+		//use Apache common URL validator to validate URL
+		UrlValidator urlValidator = new UrlValidator();
+		//if URL is invalid
+		if(!urlValidator.isValid(url.toString())){
+			
+			FacesMessage msg = 
+				new FacesMessage("URL Conversion error.", 
+						"Invalid URL format.");
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			throw new ConverterException(msg);
+		}
+		
+		URLBookmark urlBookmark = new URLBookmark(url.toString());
+		
+		return urlBookmark;
+	}
+
+	@Override
+	public String getAsString(FacesContext context, UIComponent component,
+			Object value) {
+
+		return value.toString();
+		
+	}	
 }

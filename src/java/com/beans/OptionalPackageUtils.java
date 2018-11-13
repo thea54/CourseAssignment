@@ -78,7 +78,6 @@ public class OptionalPackageUtils {
             }
             
             stmt.close();
-            con.close();
         } catch(Exception ex){
             System.err.println(ex.getClass().getName() + ": " + ex.getMessage());
         }
